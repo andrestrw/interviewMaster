@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack & Tools
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project leverages modern tools to ensure a high-quality developer experience and a robust user interface.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Shadcn UI
 
-## Learn More
+We chose Shadcn UI for our component system because:
 
-To learn more about Next.js, take a look at the following resources:
+- **Full Ownership:** Components are copied directly into the project, allowing for complete control over the code without being tied to a library's versioning.
+- **Accessibility:** Built on top of **Radix UI**, ensuring all interactive elements follow WAI-ARIA patterns out of the box.
+- **Styling Flexibility:** Uses **Tailwind CSS** for styling, making it easy to maintain a consistent design system while keeping the bundle size small.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Zod
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+We use Zod for schema validation to achieve:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **TypeScript Integration:** Provides a "schema-first" approach where TypeScript types are automatically inferred from the validation logic, reducing boilerplate.
+- **Runtime Safety:** Ensures that data entering the system (from forms or APIs) matches the expected structure, preventing runtime crashes.
+- **Developer Experience:** Offers a highly intuitive API with descriptive error messages that can be directly mapped to UI form fields.
+- **Centralized Validation:** Acts as a single "Rule Book" for the app. By keeping rules in the schema instead of individual components, we avoid logic duplication and simplify maintenance.
