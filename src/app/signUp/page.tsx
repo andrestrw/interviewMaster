@@ -20,6 +20,7 @@ import {
 import { BarChart, Code, Eye, EyeOff, User } from "lucide-react";
 import Link from "next/link";
 import { JSX, SVGProps, useState } from "react";
+import { FormField } from "@/components/shared/FormField";
 
 const Logo = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
   <svg
@@ -62,8 +63,7 @@ export default function Signup() {
             </div>
           </CardHeader>
           <CardContent className="space-y-6 px-8">
-            <div className="space-y-2">
-              <Label htmlFor="role">Role</Label>
+            <FormField id="role" label="Role">
               <Select defaultValue="designer">
                 <SelectTrigger
                   id="role"
@@ -86,31 +86,18 @@ export default function Signup() {
                   </SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </FormField>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName">First name</Label>
-                <Input id="firstName" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="lastName">Last name</Label>
-                <Input id="lastName" />
-              </div>
+              <FormField id="firstName" label="First name" />
+              <FormField id="lastName" label="Last name" />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" />
-            </div>
+            <FormField id="username" label="Username" />
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email address</Label>
-              <Input id="email" type="email" />
-            </div>
+            <FormField id="email" label="Email address" type="email" />
 
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+            <FormField id="password" label="Password">
               <div className="relative">
                 <Input
                   id="password"
@@ -131,7 +118,7 @@ export default function Signup() {
                   )}
                 </Button>
               </div>
-            </div>
+            </FormField>
 
             <div className="flex items-center space-x-2">
               <Checkbox id="terms" />
