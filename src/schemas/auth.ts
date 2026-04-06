@@ -11,9 +11,9 @@ export const SignUpSchema = z.object({
 
   username: z.string().min(3, "Username must be at least 3 characters."),
 
-  email: z
-    .string()
-    .email("Please enter a valid email address (e.g., name@example.com)."),
+  email: z.email(
+    "Please enter a valid email address (e.g., name@example.com).",
+  ),
 
   password: z
     .string()
@@ -32,3 +32,12 @@ export const SignUpSchema = z.object({
 });
 
 export type SignUpData = z.infer<typeof SignUpSchema>;
+
+export const LoginSchema = z.object({
+  email: z.email(
+    "Please enter a valid email address (e.g., name@example.com).",
+  ),
+  password: z.string().min(1, "Password is required."),
+});
+
+export type LoginData = z.infer<typeof LoginSchema>;
