@@ -9,8 +9,9 @@ interface FormFieldProps {
   label: string;
   type?: string;
   placeholder?: string;
-  error?: string; // Nuevo prop para capturar el error de validación
+  error?: string;
   children?: ReactNode;
+  renderInput?: (errorClassName: string) => ReactNode;
   className?: string;
 }
 
@@ -21,25 +22,30 @@ export function FormField({
   placeholder,
   error,
   children,
+  renderInput,
   className = "space-y-2",
 }: FormFieldProps) {
+  const inputErrorClass = error
+    ? "border-destructive focus-visible:ring-destructive"
+    : "";
+
   return (
     <div className={className}>
       <Label htmlFor={id} className={error ? "text-destructive" : ""}>
         {label}
       </Label>
-      {children || (
-        <Input
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          className={error ? "border-destructive focus-visible:ring-destructive" : ""}
-        />
-      )}
+      {renderInput
+        ? renderInput(inputErrorClass)
+        : children ?? (
+            <Input
+              id={id}
+              type={type}
+              placeholder={placeholder}
+              className={inputErrorClass}
+            />
+          )}
       {error && (
-        <p className="text-xs font-medium text-destructive mt-1">
-          {error}
-        </p>
+        <p className="text-xs font-medium text-destructive mt-1">{error}</p>
       )}
     </div>
   );

@@ -71,140 +71,127 @@ export default function Signup() {
           </CardHeader>
           <form onSubmit={handleSubmit(onSubmit)}>
             <CardContent className="space-y-6 px-8">
-              <FormField id="role" label="Role" error={errors.role?.message}>
-                <Controller
-                  name="role"
-                  control={control}
-                  render={({ field }) => (
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger
-                        id="role"
-                        className={`[&>span]:flex [&>span]:items-center [&>span]:gap-2 [&>span_svg]:shrink-0 ${
-                          errors.role ? "border-destructive" : ""
-                        }`}
+              <FormField
+                id="role"
+                label="Role"
+                error={errors.role?.message}
+                renderInput={(cls) => (
+                  <Controller
+                    name="role"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
                       >
-                        <SelectValue placeholder="Select role" />
-                      </SelectTrigger>
-                      <SelectContent className="[&_*[role=option]]:ps-2 [&_*[role=option]]:pe-8 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:end-2 [&_*[role=option]>span]:flex [&_*[role=option]>span]:items-center [&_*[role=option]>span]:gap-2 [&_*[role=option]>span>svg]:shrink-0">
-                        <SelectItem value="designer">
-                          <User size={16} aria-hidden="true" />
-                          <span className="truncate">Product Designer</span>
-                        </SelectItem>
-                        <SelectItem value="developer">
-                          <Code size={16} aria-hidden="true" />
-                          <span className="truncate">Developer</span>
-                        </SelectItem>
-                        <SelectItem value="manager">
-                          <BarChart size={16} aria-hidden="true" />
-                          <span className="truncate">Product Manager</span>
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  )}
-                />
-              </FormField>
+                        <SelectTrigger
+                          id="role"
+                          className={`[&>span]:flex [&>span]:items-center [&>span]:gap-2 [&>span_svg]:shrink-0 ${cls}`}
+                        >
+                          <SelectValue placeholder="Select role" />
+                        </SelectTrigger>
+                        <SelectContent className="[&_*[role=option]]:ps-2 [&_*[role=option]]:pe-8 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:end-2 [&_*[role=option]>span]:flex [&_*[role=option]>span]:items-center [&_*[role=option]>span]:gap-2 [&_*[role=option]>span>svg]:shrink-0">
+                          <SelectItem value="designer">
+                            <User size={16} aria-hidden="true" />
+                            <span className="truncate">Product Designer</span>
+                          </SelectItem>
+                          <SelectItem value="developer">
+                            <Code size={16} aria-hidden="true" />
+                            <span className="truncate">Developer</span>
+                          </SelectItem>
+                          <SelectItem value="manager">
+                            <BarChart size={16} aria-hidden="true" />
+                            <span className="truncate">Product Manager</span>
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
+                )}
+              />
 
               <div className="grid grid-cols-2 gap-4">
                 <FormField
                   id="firstName"
                   label="First name"
                   error={errors.firstName?.message}
-                >
-                  <Input
-                    id="firstName"
-                    {...register("firstName")}
-                    className={
-                      errors.firstName
-                        ? "border-destructive focus-visible:ring-destructive"
-                        : ""
-                    }
-                  />
-                </FormField>
+                  renderInput={(cls) => (
+                    <Input
+                      id="firstName"
+                      {...register("firstName")}
+                      className={cls}
+                    />
+                  )}
+                />
                 <FormField
                   id="lastName"
                   label="Last name"
                   error={errors.lastName?.message}
-                >
-                  <Input
-                    id="lastName"
-                    {...register("lastName")}
-                    className={
-                      errors.lastName
-                        ? "border-destructive focus-visible:ring-destructive"
-                        : ""
-                    }
-                  />
-                </FormField>
+                  renderInput={(cls) => (
+                    <Input
+                      id="lastName"
+                      {...register("lastName")}
+                      className={cls}
+                    />
+                  )}
+                />
               </div>
 
               <FormField
                 id="username"
                 label="Username"
                 error={errors.username?.message}
-              >
-                <Input
-                  id="username"
-                  {...register("username")}
-                  className={
-                    errors.username
-                      ? "border-destructive focus-visible:ring-destructive"
-                      : ""
-                  }
-                />
-              </FormField>
+                renderInput={(cls) => (
+                  <Input
+                    id="username"
+                    {...register("username")}
+                    className={cls}
+                  />
+                )}
+              />
 
               <FormField
                 id="email"
                 label="Email address"
-                type="email"
                 error={errors.email?.message}
-              >
-                <Input
-                  id="email"
-                  type="email"
-                  {...register("email")}
-                  className={
-                    errors.email
-                      ? "border-destructive focus-visible:ring-destructive"
-                      : ""
-                  }
-                />
-              </FormField>
+                renderInput={(cls) => (
+                  <Input
+                    id="email"
+                    type="email"
+                    {...register("email")}
+                    className={cls}
+                  />
+                )}
+              />
 
               <FormField
                 id="password"
                 label="Password"
                 error={errors.password?.message}
-              >
-                <div className="relative">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    className={`pr-10 ${
-                      errors.password
-                        ? "border-destructive focus-visible:ring-destructive"
-                        : ""
-                    }`}
-                    {...register("password")}
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
-                    ) : (
-                      <Eye className="h-4 w-4" />
-                    )}
-                  </Button>
-                </div>
-              </FormField>
+                renderInput={(cls) => (
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      className={`pr-10 ${cls}`}
+                      {...register("password")}
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="absolute right-0 top-0 h-full px-3 text-muted-foreground hover:bg-transparent"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </Button>
+                  </div>
+                )}
+              />
 
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
