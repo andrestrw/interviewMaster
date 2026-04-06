@@ -15,11 +15,8 @@ import {
 export default function Login() {
   return (
     <div className="flex items-center justify-center min-h-dvh">
-      {/* Añadimos w-full y max-w-sm para que la tarjeta no se estire demasiado */}
       <div className="w-full max-w-sm px-4">
         <Card className="shadow-lg">
-          {" "}
-          {/* <--- Aquí agregas la sombra */}
           <CardHeader className="text-center">
             <CardTitle className="text-lg">Welcome Back</CardTitle>
             <CardDescription>
