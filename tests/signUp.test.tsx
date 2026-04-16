@@ -52,6 +52,47 @@ describe("SignUp Page", () => {
       expect(screen.getByRole("link", { name: /sign in/i })).toBeInTheDocument();
     });
   });
-});
 
-//
+  describe("Initial State and Accessibility", () => {
+    it("The 'Role' select should default to 'Product Designer'", () => {
+      setup();
+      // The SelectTrigger is the combobox exposed to assistive tech; its text content reflects the selected value.
+      expect(screen.getByRole("combobox", { name: /role/i })).toHaveTextContent(/product designer/i);
+    });
+
+    it("The 'First name' field should initially be empty", () => {
+      setup();
+      expect(screen.getByLabelText(/first name/i)).toHaveValue("");
+    });
+
+    it("The 'Last name' field should initially be empty", () => {
+      setup();
+      expect(screen.getByLabelText(/last name/i)).toHaveValue("");
+    });
+
+    it("The 'Username' field should initially be empty", () => {
+      setup();
+      expect(screen.getByLabelText(/username/i)).toHaveValue("");
+    });
+
+    it("The 'Email address' field should initially be empty", () => {
+      setup();
+      expect(screen.getByLabelText(/email address/i)).toHaveValue("");
+    });
+
+    it("The 'Password' field should initially be empty", () => {
+      setup();
+      expect(screen.getByLabelText(/password/i)).toHaveValue("");
+    });
+
+    it("The 'Password' field should have type='password' by default (security)", () => {
+      setup();
+      expect(screen.getByLabelText(/password/i)).toHaveAttribute("type", "password");
+    });
+
+    it("The 'Terms and Conditions' checkbox should be unchecked by default", () => {
+      setup();
+      expect(screen.getByRole("checkbox", { name: /terms and conditions/i })).not.toBeChecked();
+    });
+  });
+});
