@@ -56,7 +56,7 @@ describe("SignUp Page", () => {
   describe("Initial State and Accessibility", () => {
     it("The 'Role' select should default to 'Product Designer'", () => {
       setup();
-      // The SelectTrigger is the combobox exposed to assistive tech; its text content reflects the selected value.
+
       expect(screen.getByRole("combobox", { name: /role/i })).toHaveTextContent(/product designer/i);
     });
 
