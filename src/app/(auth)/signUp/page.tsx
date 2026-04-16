@@ -37,7 +37,7 @@ export default function Signup() {
   } = useForm<SignUpData>({
     resolver: zodResolver(SignUpSchema),
     defaultValues: {
-      role: "designer",
+      role: "productDesigner",
       firstName: "",
       lastName: "",
       username: "",
@@ -91,7 +91,7 @@ export default function Signup() {
                           <SelectValue placeholder="Select role" />
                         </SelectTrigger>
                         <SelectContent className="[&_*[role=option]]:ps-2 [&_*[role=option]]:pe-8 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:end-2 [&_*[role=option]>span]:flex [&_*[role=option]>span]:items-center [&_*[role=option]>span]:gap-2 [&_*[role=option]>span>svg]:shrink-0">
-                          <SelectItem value="designer">
+                          <SelectItem value="productDesigner">
                             <User size={16} aria-hidden="true" />
                             <span className="truncate">Product Designer</span>
                           </SelectItem>
@@ -99,7 +99,7 @@ export default function Signup() {
                             <Code size={16} aria-hidden="true" />
                             <span className="truncate">Developer</span>
                           </SelectItem>
-                          <SelectItem value="manager">
+                          <SelectItem value="productManager">
                             <BarChart size={16} aria-hidden="true" />
                             <span className="truncate">Product Manager</span>
                           </SelectItem>
